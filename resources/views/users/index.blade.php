@@ -36,7 +36,13 @@
                                     <td>{{$user->email}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary"
-                                            href="{{ route('users.show', $user->id) }}">Show</a>
+                                           href="{{ route('users.show', $user->id) }}">Show</a>
+                                        <a class="btn btn-sm btn-danger"
+                                           href="#" onclick="document.querySelector('#delete-user-{{ $user->id }}').submit();">Delete</a>
+                                        <form method="post" action="{{ route('users.destroy', $user->id) }}" id="delete-user-{{ $user->id }}">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="delete" />
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

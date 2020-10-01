@@ -19,10 +19,10 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $page = request('page');
+        $page = $request->input('page');
 
         $response = Http::get('https://reqres.in/api/users?page=' . $page);
 
